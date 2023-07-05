@@ -8,6 +8,7 @@ export class ReuniaoService {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(data: CreateReuniaoDto, listaParticipantesNumeros: number[]) {
+    console.log(data, listaParticipantesNumeros);
     return await this.prisma.reuniao.create({
       data: {
         ...data,
