@@ -3,7 +3,10 @@ import { Participante } from '@prisma/client';
 export class CreateReuniaoDto {
   assuntoReuniao: string;
   descricaoReuniao: string;
+  observacoes: string;
+  reuniaoDesmarcada: boolean;
   inicioReuniao?: Date | string;
   fimReuniao?: Date | string;
-  listaParticipantesObjetos?: null | Participante[];
+  localIdFk?: number;
+  listaParticipantes?: Participante[];
 }

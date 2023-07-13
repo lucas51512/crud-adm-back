@@ -17,14 +17,7 @@ export class ReuniaoController {
 
   @Post()
   create(@Body() createReuniaoDto: CreateReuniaoDto) {
-    const { listaParticipantesObjetos, ...rest } = createReuniaoDto;
-    console.log(listaParticipantesObjetos);
-    const listaParticipantesNumeros = listaParticipantesObjetos.map(
-      (participante) => {
-        return participante.idParticipante;
-      },
-    );
-    return this.reuniaoService.create(rest, listaParticipantesNumeros);
+    return this.reuniaoService.create(createReuniaoDto);
   }
 
   @Get()

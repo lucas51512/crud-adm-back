@@ -7,11 +7,15 @@ import { PrismaService } from 'src/prisma.service';
 export class ReuniaoService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(data: CreateReuniaoDto, listaParticipantesNumeros: number[]) {
+  async create(data: CreateReuniaoDto) {
+    const { listaParticipantes, ...rest } = data;
+    const listaParticipantesNumeros = listaParticipantes.map((participante) => {
+      return participante.idParticipante;
+    });
     console.log(data, listaParticipantesNumeros);
     return await this.prisma.reuniao.create({
       data: {
-        ...data,
+        ...rest,
         listaParticipantes: {
           connect: listaParticipantesNumeros.map((participanteNumero) => ({
             idParticipante: participanteNumero,
@@ -25,7 +29,6 @@ export class ReuniaoService {
     return await this.prisma.reuniao.findMany({
       include: {
         listaParticipantes: true,
-        localReuniao: true,
       },
     });
   }
@@ -42,9 +45,21 @@ export class ReuniaoService {
   }
 
   async update(id: number, data: UpdateReuniaoDto) {
+    const { listaParticipantes, ...rest } = data;
+    const listaParticipantesNumeros = listaParticipantes.map((participante) => {
+      return participante.idParticipante;
+    });
+
     return await this.prisma.reuniao.update({
       where: { idReuniao: id },
-      data,
+      data: {
+        ...rest,
+        listaParticipantes: {
+          set: listaParticipantesNumeros.map((participanteNumero) => ({
+            idParticipante: participanteNumero,
+          })),
+        },
+      },
     });
   }
 

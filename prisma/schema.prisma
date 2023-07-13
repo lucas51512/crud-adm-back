@@ -21,6 +21,8 @@ model Reuniao {
   idReuniao             Int @id @default(autoincrement())
   assuntoReuniao        String
   descricaoReuniao      String
+  observacoes           String
+  reuniaoDesmarcada     Boolean @default(false)
   listaParticipantes    Participante[] @relation("ParticipanteReuniao")
   localReuniao          Local? @relation("LocalReuniao", fields: [localIdFk], references: [idLocal])
   localIdFk             Int? @unique
@@ -35,8 +37,7 @@ model Participante {
   emailParticipante     String
   telefoneParticipante  String
 
-  reuniaoIdFk           Int?
-  reuniao               Reuniao? @relation("ParticipanteReuniao", fields: [reuniaoIdFk], references: [idReuniao])
+  reuniao               Reuniao[] @relation("ParticipanteReuniao")
 }
 
 model Local {
