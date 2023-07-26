@@ -13,8 +13,8 @@ datasource db {
 model Usuario {
   idUsuario            Int @id @default(autoincrement())
   nomeUsuario          String
-  emailUsuario         String
-  senhaUsuario         String
+  email                String
+  senha                String
 }
 
 model Reuniao {

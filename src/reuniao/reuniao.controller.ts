@@ -10,7 +10,9 @@ import {
 import { ReuniaoService } from './reuniao.service';
 import { CreateReuniaoDto } from './dto/create-reuniao.dto';
 import { UpdateReuniaoDto } from './dto/update-reuniao.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags("Reuniões")
 @Controller('reuniao')
 export class ReuniaoController {
   constructor(private readonly reuniaoService: ReuniaoService) {}
