@@ -1,4 +1,4 @@
-import { IsString, IsEmail } from "class-validator";
+import { IsString, IsEmail, MinLength, MaxLength, Matches} from "class-validator";
 
 export class CreateUsuarioDto {
 
@@ -6,8 +6,13 @@ export class CreateUsuarioDto {
   nomeUsuario: string;
 
   @IsEmail()
-  emailUsuario: string;
+  email: string;
 
   @IsString()
-  senhaUsuario: string;
+  @MinLength(4)
+  @MaxLength(20)
+  @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
+    message: 'Senha muito fraca',
+  })
+  senha: string;
 }
