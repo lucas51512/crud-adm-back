@@ -1,3 +1,4 @@
+
 export class CreateParticipanteDto {
   idParticipante?: number;
   nomeParticipante: string;
