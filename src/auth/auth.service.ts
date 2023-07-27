@@ -13,7 +13,7 @@ export class AuthService {
 
           if(senhaValida){
             return {
-                ...usuario,
+                ...usuario, 
                 password: undefined
             }
           }

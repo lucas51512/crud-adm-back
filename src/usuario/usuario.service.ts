@@ -32,9 +32,10 @@ export class UsuarioService {
   //   });
   // }
 
-  async findByEmail(email: string){
-    return await this.prisma.usuario.findUnique({
-      where: { email }
+
+  findByEmail(email: string){
+    return this.prisma.usuario.findFirst({
+      where: { email: email },
     });
   }
 
