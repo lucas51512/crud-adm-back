@@ -11,7 +11,7 @@ export class UsuarioService {
   async create(data: CreateUsuarioDto) {
     const usuario = {
       ...data,
-      senha: await bcrypt.hash(data.senha, 15)
+      password: await bcrypt.hash(data.password, 10)
     }
     const usuarioCriado = await this.prisma.usuario.create({
       data: usuario
@@ -24,17 +24,17 @@ export class UsuarioService {
     return await this.prisma.usuario.findMany();
   }
 
-  async findOne(id: number) {
-    return await this.prisma.usuario.findUnique({
-      where: {
-        idUsuario: id,
-      },
-    });
-  }
+  // async findOne(id: number) {
+  //   return await this.prisma.usuario.findUnique({
+  //     where: {
+  //       idUsuario: id,
+  //     },
+  //   });
+  // }
 
   async findByEmail(email: string){
     return await this.prisma.usuario.findUnique({
-      where: {email}
+      where: { email }
     });
   }
 

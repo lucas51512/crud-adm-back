@@ -19,14 +19,14 @@ export class UsuarioController {
     return this.usuarioService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usuarioService.findOne(+id);
-  }
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.usuarioService.findOne(+id);
+  // }
 
-  @Get(':email')
+  @Get('email')
   findByEmail(@Param('email') email: string) {
-    return this.usuarioService.findOne(+email);
+    return this.usuarioService.findByEmail(email);
   }
 
 

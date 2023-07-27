@@ -14,7 +14,7 @@ model Usuario {
   idUsuario            Int @id @default(autoincrement())
   nomeUsuario          String
   email                String
-  senha                String
+  password             String
 }
 
 model Reuniao {

@@ -2,8 +2,8 @@
 CREATE TABLE "Usuario" (
     "idUsuario" SERIAL NOT NULL,
     "nomeUsuario" TEXT NOT NULL,
-    "emailUsuario" TEXT NOT NULL,
-    "senhaUsuario" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
 
     CONSTRAINT "Usuario_pkey" PRIMARY KEY ("idUsuario")
 );
