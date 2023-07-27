@@ -32,6 +32,12 @@ export class UsuarioService {
     });
   }
 
+  async findByEmail(email: string){
+    return await this.prisma.usuario.findUnique({
+      where: {email}
+    });
+  }
+
   async update(id: number, data: UpdateUsuarioDto) {
     return await this.prisma.usuario.update({
       where: { idUsuario: id },
