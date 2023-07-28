@@ -17,6 +17,7 @@ async function bootstrap() {
   .addTag('Reuniões')
   .addTag('Participantes')
   .addTag('Locais')
+  .addTag('Autorizações')
   .build();
 
   const document = SwaggerModule.createDocument(app, config);
