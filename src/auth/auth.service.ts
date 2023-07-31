@@ -9,20 +9,24 @@ import { UserToken } from './models/UserToken';
 @Injectable()
 export class AuthService {
   constructor(private readonly usuarioService: UsuarioService,
-     private readonly jwtService: JwtService) {}
-  
+    private readonly jwtService: JwtService) {}
+    
     login(usuario: Usuario): UserToken {
-        const payload: UserPayload = {
-          sub: usuario.idUsuario,
-          email: usuario.email,
-          name: usuario.nomeUsuario
-        };
-
-        const jwtToken = this.jwtService.sign(payload);
-
-        return {
-          access_token: jwtToken
-        }
+      const payload: UserPayload = {
+        sub: usuario.idUsuario,
+        email: usuario.email,
+        name: usuario.nomeUsuario
+      };
+      
+      const jwtToken = this.jwtService.sign(payload);
+      
+      return {
+        access_token: jwtToken
+      }
+    }
+    
+    async register(user: Usuario) {
+       return await this.usuarioService.create(user);
     }
     
     async validateUser(email: string, password: string) {
