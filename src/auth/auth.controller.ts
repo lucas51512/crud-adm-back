@@ -1,9 +1,10 @@
-import { Controller, HttpCode, HttpStatus, Post, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post, Request, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { ApiTags } from '@nestjs/swagger';
 import { AuthRequest } from './models/AuthRequest';
 import { IsPublic } from './decorators/is-public.decorator';
+import { CreateUsuarioDto } from 'src/usuario/dto/create-usuario.dto';
 
 @ApiTags("Autorizações")
 @Controller()
@@ -18,10 +19,4 @@ export class AuthController {
         return this.authService.login(req.user);
     }
 
-    @IsPublic()
-    @Post('register')
-    @UseGuards(LocalAuthGuard)
-    register(@Request() req: AuthRequest){
-        return this.authService.register(req.user);
-    }
 }

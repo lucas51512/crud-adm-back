@@ -5,6 +5,7 @@ import { UserPayload } from './models/UserPayload';
 import { Usuario } from 'src/usuario/entities/usuario.entity';
 import { JwtService } from '@nestjs/jwt';
 import { UserToken } from './models/UserToken';
+import { CreateUsuarioDto } from 'src/usuario/dto/create-usuario.dto';
 
 @Injectable()
 export class AuthService {
@@ -25,9 +26,6 @@ export class AuthService {
       }
     }
     
-    async register(user: Usuario) {
-       return await this.usuarioService.create(user);
-    }
     
     async validateUser(email: string, password: string) {
           const usuario = await this.usuarioService.findByEmail(email);
