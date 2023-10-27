@@ -10,7 +10,10 @@ import {
 import { LocalService } from './local.service';
 import { CreateLocalDto } from './dto/create-local.dto';
 import { UpdateLocalDto } from './dto/update-local.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+
+@ApiTags("Locais")
 @Controller('local')
 export class LocalController {
   constructor(private readonly localService: LocalService) {}
